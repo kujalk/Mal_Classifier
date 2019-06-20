@@ -188,7 +188,7 @@ def submit_json (file_name,id):
 		json.dump(h,f)
 		
 	headers={'Content-type': 'application/json', 'Accept': 'text/plain'}
-	p=requests.post(url="http://193.168.3.194:3000/",data=h,headers=headers)
+	p=requests.post(url="http://192.168.3.194:3000/",data=h,headers=headers)
 	print ("Data send")
 		
 ##### Start of the program
