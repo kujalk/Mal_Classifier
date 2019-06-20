@@ -14,7 +14,7 @@ MongoClient.connect('mongodb://localhost:27017/results', function (err, database
 	db = database;
 	console.log('Connected to MongoDB');
 	//Start app only after connection is ready
-	app.listen(3000,'193.168.3.194');
+	app.listen(3000,'192.168.3.194');
         console.log('I am now listening....')
    }
  });
