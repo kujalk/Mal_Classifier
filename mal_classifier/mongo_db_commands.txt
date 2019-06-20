@@ -1,0 +1,33 @@
+SQL - NoSQL
+------------
+Database - Database
+Table - Collection
+Row - Document
+
+1.mongo
+2.show databases
+3.use results
+4.show tables/collections
+
+#To find all documents 
+db.post_data.find()
+
+#To filter only specified signatures
+db.post_data.distinct("signatures.sig")
+
+#To get files that have particular signature matching | Explicitly _id key will be excluded
+db.post_data.find({'signatures.sig': 'The PDF open action contains JavaScript code'},{name:1,_id: 0})
+
+#To select only one column/field
+db.post_data.find({}, {score:1, _id:0})
+
+#To select matching patterns of signatures
+ db.post_data.find({'signatures.sig': /heap/},{name:1,_id: 0})
+
+#To capture output in text file
+mongo localhost/results --quiet --eval 'db.post_data.find({},{name:1,_id:0})' > cool.txt
+
+mongo localhost/results --quiet --eval 'DBQuery.shellBatchSize = 2000; db.post_data.find({},{name:1,_id:0})' > cool.txt
+
+#To get only values without key from mongodb
+mongo localhost/results --quiet --eval 'DBQuery.shellBatchSize = 2000; var cursor=db.post_data.find({},{name:1,_id:0});var results = [];cursor.forEach(function(row) {results.push(row.name);});results' > cool.txt
